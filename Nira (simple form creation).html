@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>User Form</h2>
+        <form id="userForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="">--Select Department--</option>
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
+                <option value="BME">BME</option>
+                <option value="ECE">ECE</option>
+                <option value="MECH">MECH</option>
+            </select>
+
+            <label for="activity">Sports or Cultural:</label>
+            <select id="activity" name="activity" required>
+                <option value="">--Select Activity--</option>
+                <option value="Sports">Sports</option>
+                <option value="Cultural">Cultural</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="response" class="form-container" style="display: none;">
+        <h2>Submitted Data</h2>
+        <p><strong>Name:</strong> <span id="resName"></span></p>
+        <p><strong>Age:</strong> <span id="resAge"></span></p>
+        <p><strong>Department:</strong> <span id="resDepartment"></span></p>
+        <p><strong>Activity:</strong> <span id="resActivity"></span></p>
+    </div>
+
+    <script>
+        const form = document.getElementById('userForm');
+        const responseDiv = document.getElementById('response');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Retrieve form data
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const department = document.getElementById('department').value;
+            const activity = document.getElementById('activity').value;
+
+            // Display the submitted data
+            document.getElementById('resName').textContent = name;
+            document.getElementById('resAge').textContent = age;
+            document.getElementById('resDepartment').textContent = department;
+            document.getElementById('resActivity').textContent = activity;
+
+            // Hide the form and show the response
+            form.style.display = 'none';
+            responseDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
